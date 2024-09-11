@@ -20,6 +20,8 @@ export class AuthService implements AuthenticationProvider {
       await this.userRepo.update({ keycloakId }, details);
       console.log('Updated');
       return user;
+    } else {
+      console.log('Created');
     }
     return this.createUser(details);
   }

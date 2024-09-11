@@ -20,7 +20,7 @@ export class KeycloakStrategy extends PassportStrategy(Strategy, 'keycloak') {
   }
 
   async validate(accessToken: string, refreshToken: string, profile: Profile) {
-    const { username, email, keycloakId } = profile;
+    const { username, email, id: keycloakId } = profile;
     const details = {
       username,
       email,

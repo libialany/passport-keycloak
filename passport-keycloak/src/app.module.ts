@@ -6,7 +6,7 @@ import { HttpModule } from '@nestjs/axios';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { KeycloakModule } from './keycloak/keycloak.module';
+import { entities } from './typeorm';
 @Module({
   imports: [
     AuthModule,
@@ -27,10 +27,10 @@ import { KeycloakModule } from './keycloak/keycloak.module';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWD,
       database: process.env.DATABASE_NAME,
+      entities,
       synchronize: true,
     }),
     HttpModule,
-    KeycloakModule,
   ],
   controllers: [AppController],
   providers: [AppService],
